@@ -12,9 +12,9 @@ class App extends Component {
         <div>
           <NavTabs />
           {/* <Route exact path="/survey" component={Survey} /> */}
-          <div class="jumbotron">
-            <h1 class="display-4">Google Books Search</h1>
-            <hr class="my-4" />
+          <div className="jumbotron">
+            <h1 className="display-4">Google Books Search</h1>
+            <hr className="my-4" />
             <h4>Search for and save books you like</h4>
           </div>
           <Switch>

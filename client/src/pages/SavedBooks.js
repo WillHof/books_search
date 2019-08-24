@@ -15,25 +15,25 @@ class Survey extends Component {
                 this.setState({ Books: res.data, iTitle: "" })
             }).catch(err => console.log(err));
     };
+    handleClick = (id) => {
+        axios.delete("/api/books", {
+            params: { "_id": this.state.Books._id }
+        }
+        )
+    }
     render() {
         return (
             <div>
-                <div class="jumbotron">
-                    <p>Search for a book you like</p>
-                    <hr class="my-4" />
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
-                    </div>
-                </div>
                 <List>
                     <h3>Saved Books:</h3>
                     {this.state.Books.map(book => (
                         <ListItem key={book._id}>
-                            <h4>{book.title}</h4> <span>by <strong>{book.authors}</strong></span>
-                            <p><strong>Description:</strong> {book.description}</p>
+                            <div >
+                                <h4>{book.title}</h4> <span>by <strong>{book.authors}</strong></span>
+                                <p><strong>Description:</strong> {book.description}</p>
+                            </div>
+                            <a className="btn btn-info" href={book.link}>Link to book</a>
+                            <button className="btn btn-danger" onClick={() => this.handleClick(book._id)}>Remove the book from your library</button>
                         </ListItem>
                     ))}
                 </List>

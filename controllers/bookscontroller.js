@@ -17,4 +17,14 @@ module.exports = {
                 }
             });
     },
+    addBook: function (req, res) {
+        db.create(req.body)
+            .then(res.status(200))
+            .catch(err => res.json(err))
+    },
+    deleteBook: function (req, res) {
+        db.remove(req.body._id)
+            .then(res("Document removed"))
+            .catch(err => res.json(err))
+    }
 }
