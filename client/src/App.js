@@ -3,7 +3,7 @@ import "./App.css";
 import NavTabs from "./components/NavTabs";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home"
-import Survey from "./pages/Survey"
+import Survey from "./pages/SavedBooks"
 class App extends Component {
 
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/Survey" component={Survey} />
+            <Route exact path="/SavedBooks" component={Survey} />
           </Switch>
         </div>
       </Router>

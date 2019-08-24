@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { List, ListItem } from "../components/bookreturn"
-class Home extends Component {
+class Survey extends Component {
     state = {
         Books: [],
         iTitle: "",
     };
-
-
-    saveBook = (data) => {
-        axios.post("/api/addBook", data)
+    componentDidMount() {
+        this.loadBooks()
     }
-
+    loadBooks = () => {
+        axios.get("/api/books")
+            .then(res => {
+                this.setState({ Books: res.data, iTitle: "" })
+            }).catch(err => console.log(err));
+    };
     render() {
         return (
             <div>
@@ -26,9 +28,18 @@ class Home extends Component {
                         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                     </div>
                 </div>
+                <List>
+                    <h3>Saved Books:</h3>
+                    {this.state.Books.map(book => (
+                        <ListItem key={book._id}>
+                            <h4>{book.title}</h4> <span>by <strong>{book.authors}</strong></span>
+                            <p><strong>Description:</strong> {book.description}</p>
+                        </ListItem>
+                    ))}
+                </List>
             </div>
-
         )
     }
 }
-export default Home
+
+export default Survey
