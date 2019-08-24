@@ -30,7 +30,7 @@ class Home extends Component {
             "title": this.state.Books.volumeInfo.title,
             "authors": this.state.Books.volumeInfo.authors,
             "image": this.state.Books.volumeInfo.imageLinks.smallThumbnail,
-            "link": this.state.Books.selfLink,
+            "link": this.state.Books.volumeInfo.canonicalVolumeLink,
             "description": this.state.Books.volumeInfo.description
         }).then(this.setState({ "Books": "Saved Succesfully" }))
     }
@@ -54,7 +54,7 @@ class Home extends Component {
                                 <h4>{this.state.Books.volumeInfo.title}</h4> <span>by <strong>{this.state.Books.volumeInfo.authors}</strong></span>
                                 <p><strong>Description:</strong> {this.state.Books.volumeInfo.description}</p>
                             </div>
-                            <a className="btn btn-info" href={this.state.Books.selfLink}>Link to book</a>
+                            <a className="btn btn-info" href={this.state.Books.volumeInfo.canonicalVolumeLink}>Link to book</a>
                             <button className="btn btn-info" onClick={this.handleClick}>Save the book to your library</button>
                         </ListItem>
                     </List>) : (<h3>{this.state.Books}</h3>)
