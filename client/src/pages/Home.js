@@ -41,7 +41,7 @@ class Home extends Component {
                     <p>Search for a book you like</p>
                     <hr className="my-4" />
                     <div className="input-group input-group-sm mb-3">
-                        <div className="input-group-prepend">
+                        <div className="input-group-prepend" onClick={this.searchBook}>
                             <span className="input-group-text" id="inputGroup-sizing-sm" onClick={this.searchBook} >Search</span>
                         </div>
                         <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" onChange={this.handleInputChange} value={this.state.iTitle} />

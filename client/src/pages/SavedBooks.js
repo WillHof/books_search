@@ -17,9 +17,8 @@ class Survey extends Component {
     };
     handleClick = (id) => {
         axios.delete("/api/books", {
-            params: { "_id": this.state.Books._id }
-        }
-        )
+            data: { "_id": id }
+        }).then(this.loadBooks())
     }
     render() {
         return (

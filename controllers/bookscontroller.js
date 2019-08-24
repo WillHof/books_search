@@ -23,8 +23,9 @@ module.exports = {
             .catch(err => res.json(err))
     },
     deleteBook: function (req, res) {
-        db.remove(req.body._id)
-            .then(res("Document removed"))
+        console.log(req.body._id)
+        db.remove({ "_id": req.body._id })
+            .then(resp => res.json(resp))
             .catch(err => res.json(err))
     }
 }
