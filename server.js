@@ -12,7 +12,7 @@ app.use(routes)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-mongoose.connect("mongodb://localhost/googlebooks", { useNewUrlParser: true });
+mongoose.connect("mongodb://heroku_gk521vrp:jp0417a0tmsmvpdvcs84n20g9c@ds353457.mlab.com:53457/heroku_gk521vrp" || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
 
 
 // Send every other request to the React app
